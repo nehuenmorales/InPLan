@@ -49,7 +49,7 @@ namespace InPlan.Migrations.DefaultDB
                     .ForeignKey("FK_Tecnologias_Empresas", "Empresas", "IdEmpresa")
                 .WithColumn("IdArea").AsInt32().NotNullable()
                     .ForeignKey("FK_Tecnologias_Areas", "Areas", "IdArea")
-                .WithColumn("Descripcion").AsString(int.MaxValue).Nullable()
+                .WithColumn("Descripcion").AsString(int.MaxValue).NotNullable()
                 .WithColumn("Observaciones").AsString(int.MaxValue).Nullable()
                 .WithColumn("Baja").AsBoolean().NotNullable().WithDefaultValue(false);
 
@@ -80,7 +80,7 @@ namespace InPlan.Migrations.DefaultDB
                     .ForeignKey("FK_EstadosTareas_Empresas", "Empresas", "IdEmpresa")
                 .WithColumn("IdArea").AsInt32().NotNullable()
                     .ForeignKey("FK_EstadosTareas_Areas", "Areas", "IdArea")
-                .WithColumn("Descripcion").AsString(int.MaxValue).Nullable()
+                .WithColumn("Descripcion").AsString(int.MaxValue).NotNullable()
                 .WithColumn("Observaciones").AsString(int.MaxValue).Nullable()
                 .WithColumn("Baja").AsBoolean().NotNullable().WithDefaultValue(false);
 
@@ -91,7 +91,7 @@ namespace InPlan.Migrations.DefaultDB
                     .ForeignKey("FK_TiposImplementacion_Empresas", "Empresas", "IdEmpresa")
                 .WithColumn("IdArea").AsInt32().NotNullable()
                     .ForeignKey("FK_TiposImplementacion_Areas", "Areas", "IdArea")
-                .WithColumn("Descripcion").AsString(int.MaxValue).Nullable()
+                .WithColumn("Descripcion").AsString(int.MaxValue).NotNullable()
                 .WithColumn("Observaciones").AsString(int.MaxValue).Nullable()
                 .WithColumn("Baja").AsBoolean().NotNullable().WithDefaultValue(false);
 
