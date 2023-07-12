@@ -1,0 +1,12 @@
+{
+  "Extends": "defaults@6.6.0",
+  "EnableRowTemplates": true,
+  "RootNamespace": "InPlan",
+  "ServerTypings": {
+    "LocalTexts": true
+  },
+  "UpgradeInfo": {
+    "InitialType": "Premium",
+    "InitialVersion": "6.7.6.0"
+  }
+}
