@@ -1,13 +1,13 @@
-﻿import { IntegerEditor, StringEditor, BooleanEditor, PrefixedContext } from "@serenity-is/corelib";
+﻿import { LookupEditor, StringEditor, TextAreaEditor, BooleanEditor, PrefixedContext } from "@serenity-is/corelib";
 import { initFormType } from "@serenity-is/corelib/q";
 
 export interface TecnicosForm {
-    IdEmpresa: IntegerEditor;
-    IdArea: IntegerEditor;
+    IdEmpresa: LookupEditor;
+    IdArea: LookupEditor;
     NombreCompleto: StringEditor;
     Celular: StringEditor;
     Email: StringEditor;
-    Observaciones: StringEditor;
+    Observaciones: TextAreaEditor;
     Baja: BooleanEditor;
 }
 
@@ -21,9 +21,10 @@ export class TecnicosForm extends PrefixedContext {
         if (!TecnicosForm.init)  {
             TecnicosForm.init = true;
 
-            var w0 = IntegerEditor;
+            var w0 = LookupEditor;
             var w1 = StringEditor;
-            var w2 = BooleanEditor;
+            var w2 = TextAreaEditor;
+            var w3 = BooleanEditor;
 
             initFormType(TecnicosForm, [
                 'IdEmpresa', w0,
@@ -31,8 +32,8 @@ export class TecnicosForm extends PrefixedContext {
                 'NombreCompleto', w1,
                 'Celular', w1,
                 'Email', w1,
-                'Observaciones', w1,
-                'Baja', w2
+                'Observaciones', w2,
+                'Baja', w3
             ]);
         }
     }
