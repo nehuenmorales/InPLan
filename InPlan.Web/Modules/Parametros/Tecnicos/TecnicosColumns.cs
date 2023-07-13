@@ -16,6 +16,7 @@ public class TecnicosColumns
     [EditLink, Width(150)]
     public string NombreCompleto { get; set; }
     public string Celular { get; set; }
+    [Width(190)]
     public string Email { get; set; }
     //public string Observaciones { get; set; }
     [Width(80)]

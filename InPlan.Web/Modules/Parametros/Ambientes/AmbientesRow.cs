@@ -25,7 +25,7 @@ public sealed partial class AmbientesRow : Row<AmbientesRow.RowFields>, IIdRow, 
         public int? IdEmpresa { get; set; }
 
         [LookupEditor(typeof(AreasRow))]
-        [DisplayName("Area"), NotNull, ForeignKey("Areas", "IdArea"), LeftJoin(jIdArea), TextualField(nameof(IdAreaDescripcion))]
+        [DisplayName("Área"), NotNull, ForeignKey("Areas", "IdArea"), LeftJoin(jIdArea), TextualField(nameof(IdAreaDescripcion))]
         public int? IdArea { get; set; }
 
         [DisplayName("Descripcion"), Size(200), NotNull, QuickSearch, NameProperty]
@@ -40,7 +40,7 @@ public sealed partial class AmbientesRow : Row<AmbientesRow.RowFields>, IIdRow, 
         [DisplayName("Empresa"), Expression($"{jIdEmpresa}.[DescripcionCorta]")]
         public string IdEmpresaDescripcionCorta { get; set; }
 
-        [DisplayName("Area"), Expression($"{jIdArea}.[Descripcion]")]
+        [DisplayName("Área"), Expression($"{jIdArea}.[Descripcion]")]
         public string IdAreaDescripcion { get; set; }
     }
 }

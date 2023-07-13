@@ -6,7 +6,9 @@ namespace InPlan.Parametros.Forms;
 [BasedOnRow(typeof(AmbientesRow), CheckNames = true)]
 public class AmbientesForm
 {
+    [HalfWidth]
     public int IdEmpresa { get; set; }
+    [HalfWidth]
     public int IdArea { get; set; }
     public string Descripcion { get; set; }
     [TextAreaEditor(Rows = 5)]
