@@ -29,9 +29,11 @@ namespace InPlan.Migrations.DefaultDB
                     .ForeignKey("FK_Tecnicos_Areas", "Areas", "IdArea")
                 .WithColumn("NombreCompleto").AsString(250).NotNullable()
                 .WithColumn("Celular").AsString(200).Nullable()
-                .WithColumn("Email").AsString(200).Nullable()
+                .WithColumn("Email").AsString(255).Nullable()
                 .WithColumn("Observaciones").AsString(int.MaxValue).Nullable()
                 .WithColumn("Baja").AsBoolean().NotNullable().WithDefaultValue(false);
+
+
 
             Create.Table("Ambientes")
                 .WithColumn("IdAmbiente").AsInt32().Identity().PrimaryKey().NotNullable()
@@ -42,6 +44,7 @@ namespace InPlan.Migrations.DefaultDB
                 .WithColumn("Descripcion").AsString(int.MaxValue).Nullable()
                 .WithColumn("Observaciones").AsString(int.MaxValue).Nullable()
                 .WithColumn("Baja").AsBoolean().NotNullable().WithDefaultValue(false);
+
 
 
             Create.Table("Tecnologias")
@@ -74,7 +77,6 @@ namespace InPlan.Migrations.DefaultDB
 
 
 
-
             Create.Table("EstadosTareas")
                 .WithColumn("IdEstadoTarea").AsInt32().Identity().PrimaryKey().NotNullable()
                 .WithColumn("IdEmpresa").AsInt32().NotNullable()
@@ -84,6 +86,7 @@ namespace InPlan.Migrations.DefaultDB
                 .WithColumn("Descripcion").AsString(int.MaxValue).NotNullable()
                 .WithColumn("Observaciones").AsString(int.MaxValue).Nullable()
                 .WithColumn("Baja").AsBoolean().NotNullable().WithDefaultValue(false);
+
 
 
             Create.Table("TiposImplementacion")
