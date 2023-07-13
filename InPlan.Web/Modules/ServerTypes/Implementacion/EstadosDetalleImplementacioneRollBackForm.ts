@@ -1,16 +1,16 @@
-﻿import { IntegerEditor, DateEditor, StringEditor, PrefixedContext } from "@serenity-is/corelib";
+﻿import { LookupEditor, DateEditor, TextAreaEditor, IntegerEditor, MultipleImageUploadEditor, PrefixedContext } from "@serenity-is/corelib";
 import { initFormType } from "@serenity-is/corelib/q";
 
 export interface EstadosDetalleImplementacioneRollBackForm {
-    IdDetalleImplementacionRollBack: IntegerEditor;
-    IdEstadoTarea: IntegerEditor;
-    IdTecnicoTarea: IntegerEditor;
+    IdDetalleImplementacionRollBack: LookupEditor;
+    IdEstadoTarea: LookupEditor;
+    IdTecnicoTarea: LookupEditor;
     FechaEstado: DateEditor;
     FechaCarga: DateEditor;
-    NotasAdicionales: StringEditor;
-    DocumentosAdicionales: StringEditor;
-    Observaciones: StringEditor;
+    NotasAdicionales: TextAreaEditor;
+    Observaciones: TextAreaEditor;
     UserId: IntegerEditor;
+    DocumentosAdicionales: MultipleImageUploadEditor;
 }
 
 export class EstadosDetalleImplementacioneRollBackForm extends PrefixedContext {
@@ -23,9 +23,11 @@ export class EstadosDetalleImplementacioneRollBackForm extends PrefixedContext {
         if (!EstadosDetalleImplementacioneRollBackForm.init)  {
             EstadosDetalleImplementacioneRollBackForm.init = true;
 
-            var w0 = IntegerEditor;
+            var w0 = LookupEditor;
             var w1 = DateEditor;
-            var w2 = StringEditor;
+            var w2 = TextAreaEditor;
+            var w3 = IntegerEditor;
+            var w4 = MultipleImageUploadEditor;
 
             initFormType(EstadosDetalleImplementacioneRollBackForm, [
                 'IdDetalleImplementacionRollBack', w0,
@@ -34,9 +36,9 @@ export class EstadosDetalleImplementacioneRollBackForm extends PrefixedContext {
                 'FechaEstado', w1,
                 'FechaCarga', w1,
                 'NotasAdicionales', w2,
-                'DocumentosAdicionales', w2,
                 'Observaciones', w2,
-                'UserId', w0
+                'UserId', w3,
+                'DocumentosAdicionales', w4
             ]);
         }
     }

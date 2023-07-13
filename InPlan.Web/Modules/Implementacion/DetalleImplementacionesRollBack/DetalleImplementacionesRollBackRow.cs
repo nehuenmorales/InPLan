@@ -11,6 +11,7 @@ namespace InPlan.Implementacion;
 [DisplayName("Detalle Implementaciónes Roll Back"), InstanceName("Detalle Implementación Roll Back")]
 [ReadPermission("Administration:General")]
 [ModifyPermission("Administration:General")]
+[LookupScript]
 public sealed partial class DetalleImplementacionesRollBackRow : Row<DetalleImplementacionesRollBackRow.RowFields>, IIdRow, INameRow
 {
     const string jIdImplementacion = nameof(jIdImplementacion);
