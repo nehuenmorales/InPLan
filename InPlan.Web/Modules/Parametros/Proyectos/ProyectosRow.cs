@@ -27,13 +27,13 @@ public sealed partial class ProyectosRow : Row<ProyectosRow.RowFields>, IIdRow, 
         public int? IdEmpresa { get; set; }
 
         [LookupEditor(typeof(AreasRow))]
-        [DisplayName("Área"), NotNull, ForeignKey("Areas", "IdArea"), LeftJoin(jIdArea), TextualField(nameof(IdAreaDescripcion))]
+        [DisplayName("�rea"), NotNull, ForeignKey("Areas", "IdArea"), LeftJoin(jIdArea), TextualField(nameof(IdAreaDescripcion))]
         public int? IdArea { get; set; }
 
         [DisplayName("Nombre"), Size(250), NotNull, QuickSearch, NameProperty]
         public string NombreProyecto { get; set; }
 
-        [DisplayName("Descripción"), Size(250)]
+        [DisplayName("Descripci�n"), Size(250)]
         public string DescripcionProyecto { get; set; }
 
         [DisplayName("Nro Ticket"), Size(50)]
@@ -60,7 +60,7 @@ public sealed partial class ProyectosRow : Row<ProyectosRow.RowFields>, IIdRow, 
         [DisplayName("Empresa"), Expression($"{jIdEmpresa}.[DescripcionCorta]")]
         public string IdEmpresaDescripcionCorta { get; set; }
 
-        [DisplayName("Área"), Expression($"{jIdArea}.[Descripcion]")]
+        [DisplayName("�rea"), Expression($"{jIdArea}.[Descripcion]")]
         public string IdAreaDescripcion { get; set; }
     }
 }
