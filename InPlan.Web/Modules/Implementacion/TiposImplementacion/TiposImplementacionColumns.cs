@@ -1,4 +1,4 @@
-﻿using Serenity.ComponentModel;
+using Serenity.ComponentModel;
 using System.ComponentModel;
 
 namespace InPlan.Implementacion.Columns;
@@ -7,12 +7,14 @@ namespace InPlan.Implementacion.Columns;
 [BasedOnRow(typeof(TiposImplementacionRow), CheckNames = true)]
 public class TiposImplementacionColumns
 {
-    [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
-    public int IdTipoImplementacion { get; set; }
-    public string IdEmpresaDescripcionCorta { get; set; }
-    public string IdAreaDescripcion { get; set; }
-    [EditLink]
+    //[EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+    //public int IdTipoImplementacion { get; set; }
+    [EditLink, Width(150)]
     public string Descripcion { get; set; }
     public string Observaciones { get; set; }
+    [Width(100)]
+    public string IdEmpresaDescripcionCorta { get; set; }
+    [Width(150)]
+    public string IdAreaDescripcion { get; set; }
     public bool Baja { get; set; }
 }

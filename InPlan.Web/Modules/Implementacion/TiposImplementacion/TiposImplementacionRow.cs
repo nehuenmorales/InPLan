@@ -1,3 +1,4 @@
+using InPlan.Tenencia;
 using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
@@ -20,13 +21,15 @@ public sealed partial class TiposImplementacionRow : Row<TiposImplementacionRow.
         [DisplayName("Id Tipo Implementacion"), Identity, IdProperty]
         public int? IdTipoImplementacion { get; set; }
 
-        [DisplayName("Id Empresa"), NotNull, ForeignKey("Empresas", "IdEmpresa"), LeftJoin(jIdEmpresa), TextualField(nameof(IdEmpresaDescripcionCorta))]
+        [LookupEditor(typeof(EmpresasRow))]
+        [DisplayName("Empresa"), NotNull, ForeignKey("Empresas", "IdEmpresa"), LeftJoin(jIdEmpresa), TextualField(nameof(IdEmpresaDescripcionCorta))]
         public int? IdEmpresa { get; set; }
 
-        [DisplayName("Id Area"), NotNull, ForeignKey("Areas", "IdArea"), LeftJoin(jIdArea), TextualField(nameof(IdAreaDescripcion))]
+        [LookupEditor(typeof(AreasRow))]
+        [DisplayName("Área"), NotNull, ForeignKey("Areas", "IdArea"), LeftJoin(jIdArea), TextualField(nameof(IdAreaDescripcion))]
         public int? IdArea { get; set; }
 
-        [DisplayName("Descripcion"), NotNull, QuickSearch, NameProperty]
+        [DisplayName("Descripción"), NotNull, QuickSearch, NameProperty]
         public string Descripcion { get; set; }
 
         [DisplayName("Observaciones")]
@@ -35,10 +38,10 @@ public sealed partial class TiposImplementacionRow : Row<TiposImplementacionRow.
         [DisplayName("Baja"), NotNull]
         public bool? Baja { get; set; }
 
-        [DisplayName("Id Empresa Descripcion Corta"), Expression($"{jIdEmpresa}.[DescripcionCorta]")]
+        [DisplayName("Empresa"), Expression($"{jIdEmpresa}.[DescripcionCorta]")]
         public string IdEmpresaDescripcionCorta { get; set; }
 
-        [DisplayName("Id Area Descripcion"), Expression($"{jIdArea}.[Descripcion]")]
+        [DisplayName("Área"), Expression($"{jIdArea}.[Descripcion]")]
         public string IdAreaDescripcion { get; set; }
     }
 }
