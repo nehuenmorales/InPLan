@@ -1,22 +1,22 @@
-﻿import { IntegerEditor, StringEditor, DateEditor, PrefixedContext } from "@serenity-is/corelib";
+﻿import { LookupEditor, StringEditor, TextAreaEditor, DateEditor, MultipleImageUploadEditor, IntegerEditor, PrefixedContext } from "@serenity-is/corelib";
 import { initFormType } from "@serenity-is/corelib/q";
 
 export interface ImplementacionesForm {
-    IdProyecto: IntegerEditor;
-    IdAmbienteProyecto: IntegerEditor;
-    IdTecnicoSolicitante: IntegerEditor;
-    IdTecnicoImplementa: IntegerEditor;
-    IdTipoImplementacion: IntegerEditor;
+    IdProyecto: LookupEditor;
+    IdAmbienteProyecto: LookupEditor;
+    IdTecnicoSolicitante: LookupEditor;
+    IdTecnicoImplementa: LookupEditor;
+    IdTipoImplementacion: LookupEditor;
     NroTicket: StringEditor;
+    Descripcion: TextAreaEditor;
     FechaSolicitud: DateEditor;
     FechaPlanificada: DateEditor;
     FechaImplementacion: DateEditor;
-    ConsideracionesPrevias: StringEditor;
-    Descripcion: StringEditor;
-    ConsideracionesPosteriores: StringEditor;
+    ConsideracionesPrevias: TextAreaEditor;
+    ConsideracionesPosteriores: TextAreaEditor;
     NotasAdicionales: StringEditor;
-    DocumentosAdicionales: StringEditor;
-    Observaciones: StringEditor;
+    DocumentosAdicionales: MultipleImageUploadEditor;
+    Observaciones: TextAreaEditor;
     UserId: IntegerEditor;
 }
 
@@ -30,9 +30,12 @@ export class ImplementacionesForm extends PrefixedContext {
         if (!ImplementacionesForm.init)  {
             ImplementacionesForm.init = true;
 
-            var w0 = IntegerEditor;
+            var w0 = LookupEditor;
             var w1 = StringEditor;
-            var w2 = DateEditor;
+            var w2 = TextAreaEditor;
+            var w3 = DateEditor;
+            var w4 = MultipleImageUploadEditor;
+            var w5 = IntegerEditor;
 
             initFormType(ImplementacionesForm, [
                 'IdProyecto', w0,
@@ -41,16 +44,16 @@ export class ImplementacionesForm extends PrefixedContext {
                 'IdTecnicoImplementa', w0,
                 'IdTipoImplementacion', w0,
                 'NroTicket', w1,
-                'FechaSolicitud', w2,
-                'FechaPlanificada', w2,
-                'FechaImplementacion', w2,
-                'ConsideracionesPrevias', w1,
-                'Descripcion', w1,
-                'ConsideracionesPosteriores', w1,
+                'Descripcion', w2,
+                'FechaSolicitud', w3,
+                'FechaPlanificada', w3,
+                'FechaImplementacion', w3,
+                'ConsideracionesPrevias', w2,
+                'ConsideracionesPosteriores', w2,
                 'NotasAdicionales', w1,
-                'DocumentosAdicionales', w1,
-                'Observaciones', w1,
-                'UserId', w0
+                'DocumentosAdicionales', w4,
+                'Observaciones', w2,
+                'UserId', w5
             ]);
         }
     }

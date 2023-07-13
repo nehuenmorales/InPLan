@@ -1,4 +1,4 @@
-﻿using Serenity.ComponentModel;
+using Serenity.ComponentModel;
 using System;
 using System.ComponentModel;
 
@@ -8,20 +8,22 @@ namespace InPlan.Implementacion.Columns;
 [BasedOnRow(typeof(ImplementacionesRow), CheckNames = true)]
 public class ImplementacionesColumns
 {
-    [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
-    public int IdImplementacion { get; set; }
-    public string IdProyectoNombreProyecto { get; set; }
-    public string IdAmbienteProyectoServidorDatos { get; set; }
-    public string IdTecnicoSolicitanteNombreCompleto { get; set; }
-    public string IdTecnicoImplementaNombreCompleto { get; set; }
-    public string IdTipoImplementacionDescripcion { get; set; }
+    //[EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+    //public int IdImplementacion { get; set; }
     [EditLink]
     public string NroTicket { get; set; }
+    [Width(100)]
+    public string IdProyectoNombreProyecto { get; set; }
+    //public string IdAmbienteProyectoServidorDatos { get; set; }
+    [Width(100)]
+    public string IdTipoImplementacionDescripcion { get; set; }
+    public string Descripcion { get; set; }
     public DateTime FechaSolicitud { get; set; }
     public DateTime FechaPlanificada { get; set; }
     public DateTime FechaImplementacion { get; set; }
+    public string IdTecnicoSolicitanteNombreCompleto { get; set; }
+    public string IdTecnicoImplementaNombreCompleto { get; set; }
     public string ConsideracionesPrevias { get; set; }
-    public string Descripcion { get; set; }
     public string ConsideracionesPosteriores { get; set; }
     public string NotasAdicionales { get; set; }
     public string DocumentosAdicionales { get; set; }
