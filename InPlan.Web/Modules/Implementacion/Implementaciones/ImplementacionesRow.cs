@@ -8,9 +8,10 @@ using System.ComponentModel;
 namespace InPlan.Implementacion;
 
 [ConnectionKey("Default"), Module("Implementacion"), TableName("Implementaciones")]
-[DisplayName("Implementaciónes"), InstanceName("Implementación")]
+[DisplayName("Implementaci�nes"), InstanceName("Implementaci�n")]
 [ReadPermission("Administration:General")]
 [ModifyPermission("Administration:General")]
+[LookupScript]
 public sealed partial class ImplementacionesRow : Row<ImplementacionesRow.RowFields>, IIdRow, INameRow
 {
     const string jIdProyecto = nameof(jIdProyecto);
@@ -42,7 +43,7 @@ public sealed partial class ImplementacionesRow : Row<ImplementacionesRow.RowFie
         public int? IdTecnicoImplementa { get; set; }
 
         [LookupEditor(typeof(TiposImplementacionRow))]
-        [DisplayName("Tipo Implementación"), NotNull, ForeignKey("TiposImplementacion", "IdTipoImplementacion"), LeftJoin(jIdTipoImplementacion), TextualField(nameof(IdTipoImplementacionDescripcion))]
+        [DisplayName("Tipo Implementaci�n"), NotNull, ForeignKey("TiposImplementacion", "IdTipoImplementacion"), LeftJoin(jIdTipoImplementacion), TextualField(nameof(IdTipoImplementacionDescripcion))]
         public int? IdTipoImplementacion { get; set; }
 
         [DisplayName("Nro Ticket"), Size(100), QuickSearch, NameProperty]
@@ -54,13 +55,13 @@ public sealed partial class ImplementacionesRow : Row<ImplementacionesRow.RowFie
         [DisplayName("Fecha Planificada"), NotNull]
         public DateTime? FechaPlanificada { get; set; }
 
-        [DisplayName("Fecha Implementación"), NotNull]
+        [DisplayName("Fecha Implementaci�n"), NotNull]
         public DateTime? FechaImplementacion { get; set; }
 
         [DisplayName("Consideraciones Previas"), Size(250)]
         public string ConsideracionesPrevias { get; set; }
 
-        [DisplayName("Descripción"), Size(250)]
+        [DisplayName("Descripci�n"), Size(250)]
         public string Descripcion { get; set; }
 
         [DisplayName("Consideraciones Posteriores"), Size(250)]
@@ -91,7 +92,7 @@ public sealed partial class ImplementacionesRow : Row<ImplementacionesRow.RowFie
         [DisplayName("Tecnico Implementa"), Expression($"{jIdTecnicoImplementa}.[NombreCompleto]")]
         public string IdTecnicoImplementaNombreCompleto { get; set; }
 
-        [DisplayName("Tipo Implementación"), Expression($"{jIdTipoImplementacion}.[Descripcion]")]
+        [DisplayName("Tipo Implementaci�n"), Expression($"{jIdTipoImplementacion}.[Descripcion]")]
         public string IdTipoImplementacionDescripcion { get; set; }
 
         [DisplayName("User"), Expression($"{jUser}.[Username]")]
