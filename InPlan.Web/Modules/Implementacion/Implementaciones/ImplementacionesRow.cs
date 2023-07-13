@@ -1,4 +1,4 @@
-﻿using Serenity.ComponentModel;
+using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
 using System;
@@ -10,6 +10,7 @@ namespace InPlan.Implementacion;
 [DisplayName("Implementaciones"), InstanceName("Implementaciones")]
 [ReadPermission("Administration:General")]
 [ModifyPermission("Administration:General")]
+[LookupScript]
 public sealed partial class ImplementacionesRow : Row<ImplementacionesRow.RowFields>, IIdRow, INameRow
 {
     const string jIdProyecto = nameof(jIdProyecto);

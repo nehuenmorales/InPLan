@@ -1,9 +1,9 @@
-﻿import { IntegerEditor, StringEditor, DateEditor, PrefixedContext } from "@serenity-is/corelib";
+﻿import { LookupEditor, StringEditor, DateEditor, IntegerEditor, PrefixedContext } from "@serenity-is/corelib";
 import { initFormType } from "@serenity-is/corelib/q";
 
 export interface DetalleImplementacionesForm {
-    IdImplementacion: IntegerEditor;
-    IdTecnicoResponsable: IntegerEditor;
+    IdImplementacion: LookupEditor;
+    IdTecnicoResponsable: LookupEditor;
     Orden: StringEditor;
     DescripcionTarea: StringEditor;
     NotasAdicionales: StringEditor;
@@ -24,9 +24,10 @@ export class DetalleImplementacionesForm extends PrefixedContext {
         if (!DetalleImplementacionesForm.init)  {
             DetalleImplementacionesForm.init = true;
 
-            var w0 = IntegerEditor;
+            var w0 = LookupEditor;
             var w1 = StringEditor;
             var w2 = DateEditor;
+            var w3 = IntegerEditor;
 
             initFormType(DetalleImplementacionesForm, [
                 'IdImplementacion', w0,
@@ -38,7 +39,7 @@ export class DetalleImplementacionesForm extends PrefixedContext {
                 'FechaInicio', w2,
                 'FechaFinalizacion', w2,
                 'Observaciones', w1,
-                'IdEstadoTarea', w0
+                'IdEstadoTarea', w3
             ]);
         }
     }
