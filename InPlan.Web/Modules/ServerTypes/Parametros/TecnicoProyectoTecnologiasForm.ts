@@ -1,9 +1,9 @@
-﻿import { IntegerEditor, PrefixedContext } from "@serenity-is/corelib";
+﻿import { LookupEditor, PrefixedContext } from "@serenity-is/corelib";
 import { initFormType } from "@serenity-is/corelib/q";
 
 export interface TecnicoProyectoTecnologiasForm {
-    IdTecnicoProyecto: IntegerEditor;
-    IdTecnologia: IntegerEditor;
+    IdTecnicoProyecto: LookupEditor;
+    IdTecnologia: LookupEditor;
 }
 
 export class TecnicoProyectoTecnologiasForm extends PrefixedContext {
@@ -16,7 +16,7 @@ export class TecnicoProyectoTecnologiasForm extends PrefixedContext {
         if (!TecnicoProyectoTecnologiasForm.init)  {
             TecnicoProyectoTecnologiasForm.init = true;
 
-            var w0 = IntegerEditor;
+            var w0 = LookupEditor;
 
             initFormType(TecnicoProyectoTecnologiasForm, [
                 'IdTecnicoProyecto', w0,
