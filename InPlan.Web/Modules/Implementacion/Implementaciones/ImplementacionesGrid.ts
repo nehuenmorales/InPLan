@@ -1,4 +1,4 @@
-﻿import { Decorators, EntityGrid } from '@serenity-is/corelib';
+import { Decorators, EntityGrid } from '@serenity-is/corelib';
 import { ImplementacionesColumns, ImplementacionesRow, ImplementacionesService } from '../../ServerTypes/Implementacion';
 import { ImplementacionesDialog } from './ImplementacionesDialog';
 
@@ -11,5 +11,14 @@ export class ImplementacionesGrid extends EntityGrid<ImplementacionesRow, any> {
 
     constructor(container: JQuery) {
         super(container);
+    }
+    protected getButtons() {
+        const buttons = super.getButtons();
+
+        buttons.map(b => {
+            if (b.action == "add") b.title = "Nueva Implementación"
+            return b
+        })
+        return buttons
     }
 }
