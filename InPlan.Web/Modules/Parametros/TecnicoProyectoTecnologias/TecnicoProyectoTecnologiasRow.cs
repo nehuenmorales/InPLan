@@ -1,4 +1,4 @@
-﻿using Serenity.ComponentModel;
+using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
 using System.ComponentModel;
@@ -9,6 +9,7 @@ namespace InPlan.Parametros;
 [DisplayName("Tecnico Proyecto Tecnologias"), InstanceName("Tecnico Proyecto Tecnologias")]
 [ReadPermission("Administration:General")]
 [ModifyPermission("Administration:General")]
+[LookupScript]
 public sealed partial class TecnicoProyectoTecnologiasRow : Row<TecnicoProyectoTecnologiasRow.RowFields>, IIdRow
 {
     const string jIdTecnicoProyecto = nameof(jIdTecnicoProyecto);
@@ -19,16 +20,18 @@ public sealed partial class TecnicoProyectoTecnologiasRow : Row<TecnicoProyectoT
         [DisplayName("Id Tecnico Proyecto Tecnologia"), Identity, IdProperty]
         public int? IdTecnicoProyectoTecnologia { get; set; }
 
-        [DisplayName("Id Tecnico Proyecto"), NotNull, ForeignKey("TecnicosProyectos", "IdTecnicoProyecto"), LeftJoin(jIdTecnicoProyecto), TextualField(nameof(IdTecnicoProyectoObservaciones))]
+        [LookupEditor(typeof(TecnicosRow))]
+        [DisplayName("Técnico"), NotNull, ForeignKey("TecnicosProyectos", "IdTecnicoProyecto"), LeftJoin(jIdTecnicoProyecto), TextualField(nameof(IdTecnicoProyectoObservaciones))]
         public int? IdTecnicoProyecto { get; set; }
 
-        [DisplayName("Id Tecnologia"), NotNull, ForeignKey("Tecnologias", "IdTecnologia"), LeftJoin(jIdTecnologia), TextualField(nameof(IdTecnologiaDescripcion))]
+        [LookupEditor(typeof(TecnologiasRow))]
+        [DisplayName("Tecnología"), NotNull, ForeignKey("Tecnologias", "IdTecnologia"), LeftJoin(jIdTecnologia), TextualField(nameof(IdTecnologiaDescripcion))]
         public int? IdTecnologia { get; set; }
 
-        [DisplayName("Id Tecnico Proyecto Observaciones"), Expression($"{jIdTecnicoProyecto}.[Observaciones]")]
+        [DisplayName("Observaciones"), Expression($"{jIdTecnicoProyecto}.[Observaciones]")]
         public string IdTecnicoProyectoObservaciones { get; set; }
 
-        [DisplayName("Id Tecnologia Descripcion"), Expression($"{jIdTecnologia}.[Descripcion]")]
+        [DisplayName("Descripción"), Expression($"{jIdTecnologia}.[Descripcion]")]
         public string IdTecnologiaDescripcion { get; set; }
     }
 }
