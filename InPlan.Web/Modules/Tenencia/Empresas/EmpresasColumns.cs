@@ -1,4 +1,4 @@
-﻿using Serenity.ComponentModel;
+using Serenity.ComponentModel;
 using System.ComponentModel;
 
 namespace InPlan.Tenencia.Columns;
@@ -7,8 +7,8 @@ namespace InPlan.Tenencia.Columns;
 [BasedOnRow(typeof(EmpresasRow), CheckNames = true)]
 public class EmpresasColumns
 {
-    [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
-    public int IdEmpresa { get; set; }
+    //[EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+    //public int IdEmpresa { get; set; }
     [EditLink]
     public string DescripcionCorta { get; set; }
     public string Descripcion { get; set; }
