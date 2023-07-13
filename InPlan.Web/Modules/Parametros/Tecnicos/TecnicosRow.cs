@@ -7,9 +7,10 @@ using System.ComponentModel;
 namespace InPlan.Parametros;
 
 [ConnectionKey("Default"), Module("Parametros"), TableName("Tecnicos")]
-[DisplayName("Tecnicos"), InstanceName("Tecnico")]
+[DisplayName("Técnicos"), InstanceName("Técnico")]
 [ReadPermission("Administration:General")]
 [ModifyPermission("Administration:General")]
+[LookupScript]
 public sealed partial class TecnicosRow : Row<TecnicosRow.RowFields>, IIdRow, INameRow
 {
     const string jIdEmpresa = nameof(jIdEmpresa);
@@ -25,7 +26,7 @@ public sealed partial class TecnicosRow : Row<TecnicosRow.RowFields>, IIdRow, IN
         public int? IdEmpresa { get; set; }
 
         [LookupEditor(typeof(AreasRow))]
-        [DisplayName("Area"), NotNull, ForeignKey("Areas", "IdArea"), LeftJoin(jIdArea), TextualField(nameof(IdAreaDescripcion))]
+        [DisplayName("Área"), NotNull, ForeignKey("Areas", "IdArea"), LeftJoin(jIdArea), TextualField(nameof(IdAreaDescripcion))]
         public int? IdArea { get; set; }
 
         [DisplayName("Nombre Completo"), Size(250), NotNull, QuickSearch, NameProperty]
@@ -46,7 +47,7 @@ public sealed partial class TecnicosRow : Row<TecnicosRow.RowFields>, IIdRow, IN
         [DisplayName("Empresa"), Expression($"{jIdEmpresa}.[DescripcionCorta]")]
         public string IdEmpresaDescripcionCorta { get; set; }
 
-        [DisplayName("Area"), Expression($"{jIdArea}.[Descripcion]")]
+        [DisplayName("Área"), Expression($"{jIdArea}.[Descripcion]")]
         public string IdAreaDescripcion { get; set; }
     }
 }
