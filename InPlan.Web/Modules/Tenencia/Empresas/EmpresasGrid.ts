@@ -1,4 +1,4 @@
-﻿import { Decorators, EntityGrid } from '@serenity-is/corelib';
+import { Decorators, EntityGrid } from '@serenity-is/corelib';
 import { EmpresasColumns, EmpresasRow, EmpresasService } from '../../ServerTypes/Tenencia';
 import { EmpresasDialog } from './EmpresasDialog';
 
@@ -11,5 +11,14 @@ export class EmpresasGrid extends EntityGrid<EmpresasRow, any> {
 
     constructor(container: JQuery) {
         super(container);
+    }
+    protected getButtons() {
+        const buttons = super.getButtons();
+
+        buttons.map(b => {
+            if (b.action == "add") b.title = "Nueva Empresa"
+            return b
+        })
+        return buttons
     }
 }

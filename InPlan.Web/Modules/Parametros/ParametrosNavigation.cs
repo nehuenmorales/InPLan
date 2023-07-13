@@ -1,7 +1,9 @@
-﻿using Serenity.Navigation;
+using Serenity.Navigation;
 using MyPages = InPlan.Parametros.Pages;
 
-[assembly: NavigationLink(int.MaxValue, "Parametros/Ambientes", typeof(MyPages.AmbientesPage), icon: null)]
+[assembly: NavigationMenu(98, "Parametros", icon: "fa-cogs")]
+
+[assembly: NavigationLink(100, "Parametros/Ambientes", typeof(MyPages.AmbientesPage), icon: "fa fa-cubes")]
 [assembly: NavigationLink(int.MaxValue, "Parametros/Ambientes Proyectos", typeof(MyPages.AmbientesProyectosPage), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Parametros/Clientes", typeof(MyPages.ClientesPage), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Parametros/Estados Tareas", typeof(MyPages.EstadosTareasPage), icon: null)]

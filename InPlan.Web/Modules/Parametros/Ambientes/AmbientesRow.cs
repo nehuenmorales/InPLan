@@ -1,4 +1,5 @@
-﻿using Serenity.ComponentModel;
+using InPlan.Tenencia;
+using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
 using System.ComponentModel;
@@ -6,7 +7,7 @@ using System.ComponentModel;
 namespace InPlan.Parametros;
 
 [ConnectionKey("Default"), Module("Parametros"), TableName("Ambientes")]
-[DisplayName("Ambientes"), InstanceName("Ambientes")]
+[DisplayName("Ambientes"), InstanceName("Ambiente")]
 [ReadPermission("Administration:General")]
 [ModifyPermission("Administration:General")]
 public sealed partial class AmbientesRow : Row<AmbientesRow.RowFields>, IIdRow, INameRow
@@ -19,10 +20,12 @@ public sealed partial class AmbientesRow : Row<AmbientesRow.RowFields>, IIdRow, 
         [DisplayName("Id Ambiente"), Identity, IdProperty]
         public int? IdAmbiente { get; set; }
 
-        [DisplayName("Id Empresa"), NotNull, ForeignKey("Empresas", "IdEmpresa"), LeftJoin(jIdEmpresa), TextualField(nameof(IdEmpresaDescripcionCorta))]
+        [LookupEditor(typeof(EmpresasRow))]
+        [DisplayName("Empresa"), NotNull, ForeignKey("Empresas", "IdEmpresa"), LeftJoin(jIdEmpresa), TextualField(nameof(IdEmpresaDescripcionCorta))]
         public int? IdEmpresa { get; set; }
 
-        [DisplayName("Id Area"), NotNull, ForeignKey("Areas", "IdArea"), LeftJoin(jIdArea), TextualField(nameof(IdAreaDescripcion))]
+        [LookupEditor(typeof(AreasRow))]
+        [DisplayName("Area"), NotNull, ForeignKey("Areas", "IdArea"), LeftJoin(jIdArea), TextualField(nameof(IdAreaDescripcion))]
         public int? IdArea { get; set; }
 
         [DisplayName("Descripcion"), Size(200), NotNull, QuickSearch, NameProperty]
@@ -34,10 +37,10 @@ public sealed partial class AmbientesRow : Row<AmbientesRow.RowFields>, IIdRow, 
         [DisplayName("Baja"), NotNull]
         public bool? Baja { get; set; }
 
-        [DisplayName("Id Empresa Descripcion Corta"), Expression($"{jIdEmpresa}.[DescripcionCorta]")]
+        [DisplayName("Empresa"), Expression($"{jIdEmpresa}.[DescripcionCorta]")]
         public string IdEmpresaDescripcionCorta { get; set; }
 
-        [DisplayName("Id Area Descripcion"), Expression($"{jIdArea}.[Descripcion]")]
+        [DisplayName("Area"), Expression($"{jIdArea}.[Descripcion]")]
         public string IdAreaDescripcion { get; set; }
     }
 }
