@@ -1,4 +1,5 @@
-﻿using Serenity.ComponentModel;
+using InPlan.Parametros;
+using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
 using System;
@@ -7,7 +8,7 @@ using System.ComponentModel;
 namespace InPlan.Implementacion;
 
 [ConnectionKey("Default"), Module("Implementacion"), TableName("DetalleImplementacionesRollBack")]
-[DisplayName("Detalle Implementaciones Roll Back"), InstanceName("Detalle Implementaciones Roll Back")]
+[DisplayName("Detalle Implementaciónes Roll Back"), InstanceName("Detalle Implementación Roll Back")]
 [ReadPermission("Administration:General")]
 [ModifyPermission("Administration:General")]
 public sealed partial class DetalleImplementacionesRollBackRow : Row<DetalleImplementacionesRollBackRow.RowFields>, IIdRow, INameRow
@@ -21,10 +22,12 @@ public sealed partial class DetalleImplementacionesRollBackRow : Row<DetalleImpl
         [DisplayName("Id Detalle Implementacion Roll Back"), Identity, IdProperty]
         public int? IdDetalleImplementacionRollBack { get; set; }
 
-        [DisplayName("Id Implementacion"), NotNull, ForeignKey("Implementaciones", "IdImplementacion"), LeftJoin(jIdImplementacion), TextualField(nameof(IdImplementacionNroTicket))]
+        [LookupEditor(typeof(ImplementacionesRow))]
+        [DisplayName("Implementación"), NotNull, ForeignKey("Implementaciones", "IdImplementacion"), LeftJoin(jIdImplementacion), TextualField(nameof(IdImplementacionNroTicket))]
         public int? IdImplementacion { get; set; }
 
-        [DisplayName("Id Tecnico Responsable"), NotNull, ForeignKey("Tecnicos", "IdTecnico"), LeftJoin(jIdTecnicoResponsable), TextualField(nameof(IdTecnicoResponsableNombreCompleto))]
+        [LookupEditor(typeof(TecnicosRow))]
+        [DisplayName("Tecnico Responsable"), NotNull, ForeignKey("Tecnicos", "IdTecnico"), LeftJoin(jIdTecnicoResponsable), TextualField(nameof(IdTecnicoResponsableNombreCompleto))]
         public int? IdTecnicoResponsable { get; set; }
 
         [DisplayName("Orden"), QuickSearch, NameProperty]
@@ -37,6 +40,7 @@ public sealed partial class DetalleImplementacionesRollBackRow : Row<DetalleImpl
         public string NotasAdicionales { get; set; }
 
         [DisplayName("Documentos Adicionales")]
+        [MultipleFileUploadEditor]
         public string DocumentosAdicionales { get; set; }
 
         [DisplayName("Fecha Inicio"), NotNull]
@@ -48,16 +52,17 @@ public sealed partial class DetalleImplementacionesRollBackRow : Row<DetalleImpl
         [DisplayName("Observaciones")]
         public string Observaciones { get; set; }
 
-        [DisplayName("Id Estado Tarea"), NotNull, ForeignKey("EstadosTareas", "IdEstadoTarea"), LeftJoin(jIdEstadoTarea), TextualField(nameof(IdEstadoTareaDescripcion))]
+        [LookupEditor(typeof(EstadosTareasRow))]
+        [DisplayName("Estado Tarea"), NotNull, ForeignKey("EstadosTareas", "IdEstadoTarea"), LeftJoin(jIdEstadoTarea), TextualField(nameof(IdEstadoTareaDescripcion))]
         public int? IdEstadoTarea { get; set; }
 
-        [DisplayName("Id Implementacion Nro Ticket"), Expression($"{jIdImplementacion}.[NroTicket]")]
+        [DisplayName("Nro Ticket"), Expression($"{jIdImplementacion}.[NroTicket]")]
         public string IdImplementacionNroTicket { get; set; }
 
-        [DisplayName("Id Tecnico Responsable Nombre Completo"), Expression($"{jIdTecnicoResponsable}.[NombreCompleto]")]
+        [DisplayName("Tecnico Responsable"), Expression($"{jIdTecnicoResponsable}.[NombreCompleto]")]
         public string IdTecnicoResponsableNombreCompleto { get; set; }
 
-        [DisplayName("Id Estado Tarea Descripcion"), Expression($"{jIdEstadoTarea}.[Descripcion]")]
+        [DisplayName("Estado Tarea"), Expression($"{jIdEstadoTarea}.[Descripcion]")]
         public string IdEstadoTareaDescripcion { get; set; }
     }
 }
