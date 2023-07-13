@@ -1,4 +1,4 @@
-﻿import { Decorators, EntityGrid } from '@serenity-is/corelib';
+import { Decorators, EntityGrid } from '@serenity-is/corelib';
 import { AreasColumns, AreasRow, AreasService } from '../../ServerTypes/Tenencia';
 import { AreasDialog } from './AreasDialog';
 
@@ -11,5 +11,14 @@ export class AreasGrid extends EntityGrid<AreasRow, any> {
 
     constructor(container: JQuery) {
         super(container);
+    }
+
+    protected getButtons() {
+        const buttons = super.getButtons();
+        buttons.map(b => {
+            if (b.action == "add") b.title = "Nueva Área"
+            return b
+        })
+        return buttons
     }
 }
