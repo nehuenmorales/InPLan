@@ -1,15 +1,15 @@
-﻿import { IntegerEditor, StringEditor, PrefixedContext } from "@serenity-is/corelib";
+﻿import { LookupEditor, StringEditor, TextAreaEditor, MultipleImageUploadEditor, PrefixedContext } from "@serenity-is/corelib";
 import { initFormType } from "@serenity-is/corelib/q";
 
 export interface AmbientesProyectosForm {
-    IdProyecto: IntegerEditor;
-    IdAmbiente: IntegerEditor;
-    ServidorDatos: StringEditor;
-    InstaciaServidor: StringEditor;
+    IdProyecto: LookupEditor;
+    IdAmbiente: LookupEditor;
     ServidorWeb: StringEditor;
-    NotasAdicionales: StringEditor;
-    DocumentosRelacionados: StringEditor;
-    Observaciones: StringEditor;
+    InstaciaServidor: StringEditor;
+    ServidorDatos: TextAreaEditor;
+    NotasAdicionales: TextAreaEditor;
+    Observaciones: TextAreaEditor;
+    DocumentosRelacionados: MultipleImageUploadEditor;
 }
 
 export class AmbientesProyectosForm extends PrefixedContext {
@@ -22,18 +22,20 @@ export class AmbientesProyectosForm extends PrefixedContext {
         if (!AmbientesProyectosForm.init)  {
             AmbientesProyectosForm.init = true;
 
-            var w0 = IntegerEditor;
+            var w0 = LookupEditor;
             var w1 = StringEditor;
+            var w2 = TextAreaEditor;
+            var w3 = MultipleImageUploadEditor;
 
             initFormType(AmbientesProyectosForm, [
                 'IdProyecto', w0,
                 'IdAmbiente', w0,
-                'ServidorDatos', w1,
-                'InstaciaServidor', w1,
                 'ServidorWeb', w1,
-                'NotasAdicionales', w1,
-                'DocumentosRelacionados', w1,
-                'Observaciones', w1
+                'InstaciaServidor', w1,
+                'ServidorDatos', w2,
+                'NotasAdicionales', w2,
+                'Observaciones', w2,
+                'DocumentosRelacionados', w3
             ]);
         }
     }
