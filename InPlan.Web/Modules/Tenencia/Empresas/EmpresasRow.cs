@@ -9,6 +9,7 @@ namespace InPlan.Tenencia;
 [DisplayName("Empresas"), InstanceName("Empresas")]
 [ReadPermission("Administration:General")]
 [ModifyPermission("Administration:General")]
+[LookupScript]
 public sealed partial class EmpresasRow : Row<EmpresasRow.RowFields>, IIdRow, INameRow
 {
     class RowTemplate
