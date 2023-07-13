@@ -6,7 +6,7 @@ using System.ComponentModel;
 namespace InPlan.Parametros;
 
 [ConnectionKey("Default"), Module("Parametros"), TableName("TecnicosProyectos")]
-[DisplayName("Tecnicos Proyectos"), InstanceName("Tecnicos Proyectos")]
+[DisplayName("Técnicos Proyectos"), InstanceName("Técnicos Proyectos")]
 [ReadPermission("Administration:General")]
 [ModifyPermission("Administration:General")]
 [LookupScript]
