@@ -10,6 +10,7 @@ namespace InPlan.Parametros;
 [DisplayName("Ambientes"), InstanceName("Ambiente")]
 [ReadPermission("Administration:General")]
 [ModifyPermission("Administration:General")]
+[LookupScript]
 public sealed partial class AmbientesRow : Row<AmbientesRow.RowFields>, IIdRow, INameRow
 {
     const string jIdEmpresa = nameof(jIdEmpresa);

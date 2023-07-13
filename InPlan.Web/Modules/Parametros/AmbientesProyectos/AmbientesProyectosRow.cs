@@ -1,4 +1,4 @@
-﻿using Serenity.ComponentModel;
+using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
 using System.ComponentModel;
@@ -6,7 +6,7 @@ using System.ComponentModel;
 namespace InPlan.Parametros;
 
 [ConnectionKey("Default"), Module("Parametros"), TableName("AmbientesProyectos")]
-[DisplayName("Ambientes Proyectos"), InstanceName("Ambientes Proyectos")]
+[DisplayName("Ambientes Proyectos"), InstanceName("Ambiente Proyecto")]
 [ReadPermission("Administration:General")]
 [ModifyPermission("Administration:General")]
 public sealed partial class AmbientesProyectosRow : Row<AmbientesProyectosRow.RowFields>, IIdRow, INameRow
@@ -19,16 +19,18 @@ public sealed partial class AmbientesProyectosRow : Row<AmbientesProyectosRow.Ro
         [DisplayName("Id Ambiente Proyecto"), Identity, IdProperty]
         public int? IdAmbienteProyecto { get; set; }
 
-        [DisplayName("Id Proyecto"), NotNull, ForeignKey("Proyectos", "IdProyecto"), LeftJoin(jIdProyecto), TextualField(nameof(IdProyectoNombreProyecto))]
+        [LookupEditor(typeof(ProyectosRow))]
+        [DisplayName("Proyecto"), NotNull, ForeignKey("Proyectos", "IdProyecto"), LeftJoin(jIdProyecto), TextualField(nameof(IdProyectoNombreProyecto))]
         public int? IdProyecto { get; set; }
 
-        [DisplayName("Id Ambiente"), NotNull, ForeignKey("Ambientes", "IdAmbiente"), LeftJoin(jIdAmbiente), TextualField(nameof(IdAmbienteDescripcion))]
+        [LookupEditor(typeof(AmbientesRow))]
+        [DisplayName("Ambiente"), NotNull, ForeignKey("Ambientes", "IdAmbiente"), LeftJoin(jIdAmbiente), TextualField(nameof(IdAmbienteDescripcion))]
         public int? IdAmbiente { get; set; }
 
-        [DisplayName("Servidor Datos"), QuickSearch, NameProperty]
+        [DisplayName("Datos de Servidor"), QuickSearch, NameProperty]
         public string ServidorDatos { get; set; }
 
-        [DisplayName("Instacia Servidor")]
+        [DisplayName("Instacia de Servidor")]
         public string InstaciaServidor { get; set; }
 
         [DisplayName("Servidor Web")]
@@ -37,16 +39,17 @@ public sealed partial class AmbientesProyectosRow : Row<AmbientesProyectosRow.Ro
         [DisplayName("Notas Adicionales")]
         public string NotasAdicionales { get; set; }
 
+        [MultipleFileUploadEditor]
         [DisplayName("Documentos Relacionados")]
         public string DocumentosRelacionados { get; set; }
 
         [DisplayName("Observaciones")]
         public string Observaciones { get; set; }
 
-        [DisplayName("Id Proyecto Nombre Proyecto"), Expression($"{jIdProyecto}.[NombreProyecto]")]
+        [DisplayName("Proyecto"), Expression($"{jIdProyecto}.[NombreProyecto]")]
         public string IdProyectoNombreProyecto { get; set; }
 
-        [DisplayName("Id Ambiente Descripcion"), Expression($"{jIdAmbiente}.[Descripcion]")]
+        [DisplayName("Ambiente"), Expression($"{jIdAmbiente}.[Descripcion]")]
         public string IdAmbienteDescripcion { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿import { fieldsProxy } from "@serenity-is/corelib/q";
+﻿import { getLookup, getLookupAsync, fieldsProxy } from "@serenity-is/corelib/q";
 
 export interface AmbientesRow {
     IdAmbiente?: number;
@@ -15,6 +15,12 @@ export abstract class AmbientesRow {
     static readonly idProperty = 'IdAmbiente';
     static readonly nameProperty = 'Descripcion';
     static readonly localTextPrefix = 'Parametros.Ambientes';
+    static readonly lookupKey = 'Parametros.Ambientes';
+
+    /** @deprecated use getLookupAsync instead */
+    static getLookup() { return getLookup<AmbientesRow>('Parametros.Ambientes') }
+    static async getLookupAsync() { return getLookupAsync<AmbientesRow>('Parametros.Ambientes') }
+
     static readonly deletePermission = 'Administration:General';
     static readonly insertPermission = 'Administration:General';
     static readonly readPermission = 'Administration:General';
