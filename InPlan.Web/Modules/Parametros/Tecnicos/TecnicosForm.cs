@@ -1,4 +1,4 @@
-﻿using Serenity.ComponentModel;
+using Serenity.ComponentModel;
 
 namespace InPlan.Parametros.Forms;
 
@@ -11,6 +11,8 @@ public class TecnicosForm
     public string NombreCompleto { get; set; }
     public string Celular { get; set; }
     public string Email { get; set; }
+    [TextAreaEditor(Rows = 5)]
     public string Observaciones { get; set; }
+    [HideOnInsert]
     public bool Baja { get; set; }
 }
