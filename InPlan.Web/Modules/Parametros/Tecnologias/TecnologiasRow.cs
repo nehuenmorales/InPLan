@@ -1,4 +1,4 @@
-﻿using Serenity.ComponentModel;
+using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
 using System.ComponentModel;
@@ -9,6 +9,7 @@ namespace InPlan.Parametros;
 [DisplayName("Tecnologias"), InstanceName("Tecnologias")]
 [ReadPermission("Administration:General")]
 [ModifyPermission("Administration:General")]
+[LookupScript]
 public sealed partial class TecnologiasRow : Row<TecnologiasRow.RowFields>, IIdRow, INameRow
 {
     const string jIdEmpresa = nameof(jIdEmpresa);
