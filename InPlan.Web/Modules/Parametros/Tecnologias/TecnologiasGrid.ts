@@ -1,4 +1,4 @@
-﻿import { Decorators, EntityGrid } from '@serenity-is/corelib';
+import { Decorators, EntityGrid } from '@serenity-is/corelib';
 import { TecnologiasColumns, TecnologiasRow, TecnologiasService } from '../../ServerTypes/Parametros';
 import { TecnologiasDialog } from './TecnologiasDialog';
 
@@ -11,5 +11,14 @@ export class TecnologiasGrid extends EntityGrid<TecnologiasRow, any> {
 
     constructor(container: JQuery) {
         super(container);
+    }
+
+    protected getButtons() {
+        const buttons = super.getButtons();
+        buttons.map(b => {
+            if (b.action == "add") b.title = "Nueva Tecnología"
+            return b
+        })
+        return buttons
     }
 }
