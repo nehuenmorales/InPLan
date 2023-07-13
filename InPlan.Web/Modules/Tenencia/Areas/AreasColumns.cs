@@ -1,4 +1,4 @@
-﻿using Serenity.ComponentModel;
+using Serenity.ComponentModel;
 using System.ComponentModel;
 
 namespace InPlan.Tenencia.Columns;
@@ -7,11 +7,14 @@ namespace InPlan.Tenencia.Columns;
 [BasedOnRow(typeof(AreasRow), CheckNames = true)]
 public class AreasColumns
 {
-    [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
-    public int IdArea { get; set; }
+    //[EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+    //public int IdArea { get; set; }
+    [Width(100)]
     public string IdEmpresaDescripcionCorta { get; set; }
-    [EditLink]
+    [EditLink, Width(150)]
     public string Descripcion { get; set; }
+    [Width(100)]
     public string Observaciones { get; set; }
+    [Width(80)]
     public bool Baja { get; set; }
 }

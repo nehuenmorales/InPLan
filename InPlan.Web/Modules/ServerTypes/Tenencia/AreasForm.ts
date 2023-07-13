@@ -1,10 +1,10 @@
-﻿import { IntegerEditor, StringEditor, BooleanEditor, PrefixedContext } from "@serenity-is/corelib";
+﻿import { LookupEditor, StringEditor, TextAreaEditor, BooleanEditor, PrefixedContext } from "@serenity-is/corelib";
 import { initFormType } from "@serenity-is/corelib/q";
 
 export interface AreasForm {
-    IdEmpresa: IntegerEditor;
+    IdEmpresa: LookupEditor;
     Descripcion: StringEditor;
-    Observaciones: StringEditor;
+    Observaciones: TextAreaEditor;
     Baja: BooleanEditor;
 }
 
@@ -18,15 +18,16 @@ export class AreasForm extends PrefixedContext {
         if (!AreasForm.init)  {
             AreasForm.init = true;
 
-            var w0 = IntegerEditor;
+            var w0 = LookupEditor;
             var w1 = StringEditor;
-            var w2 = BooleanEditor;
+            var w2 = TextAreaEditor;
+            var w3 = BooleanEditor;
 
             initFormType(AreasForm, [
                 'IdEmpresa', w0,
                 'Descripcion', w1,
-                'Observaciones', w1,
-                'Baja', w2
+                'Observaciones', w2,
+                'Baja', w3
             ]);
         }
     }
