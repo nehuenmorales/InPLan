@@ -11,4 +11,3 @@ using MyPages = InPlan.Parametros.Pages;
 [assembly: NavigationLink(450, "Parametros/Proyectos", typeof(MyPages.ProyectosPage), icon: "fa-lightbulb")]
 [assembly: NavigationLink(500, "Parametros/Tecnologías", typeof(MyPages.TecnologiasPage), icon: "fa-code")]
 [assembly: NavigationLink(600, "Parametros/Técnicos", typeof(MyPages.TecnicosPage), icon: "fa-users-cog")]
-[assembly: NavigationLink(int.MaxValue, "Parametros/Tecnicos Proyectos", typeof(MyPages.TecnicosProyectosPage), icon: null)]
