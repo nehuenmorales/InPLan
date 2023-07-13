@@ -1,4 +1,5 @@
-﻿using Serenity.ComponentModel;
+using InPlan.Parametros;
+using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
 using System;
@@ -7,7 +8,7 @@ using System.ComponentModel;
 namespace InPlan.Implementacion;
 
 [ConnectionKey("Default"), Module("Implementacion"), TableName("EstadosDetalleImplementacioneRollBack")]
-[DisplayName("Estados Detalle Implementacione Roll Back"), InstanceName("Estados Detalle Implementacione Roll Back")]
+[DisplayName("Estados Detalle Implementaciónes Roll Back"), InstanceName("Estado Detalle Implementación Roll Back")]
 [ReadPermission("Administration:General")]
 [ModifyPermission("Administration:General")]
 public sealed partial class EstadosDetalleImplementacioneRollBackRow : Row<EstadosDetalleImplementacioneRollBackRow.RowFields>, IIdRow, INameRow
@@ -19,16 +20,19 @@ public sealed partial class EstadosDetalleImplementacioneRollBackRow : Row<Estad
 
     class RowTemplate
     {
-        [DisplayName("Id Estado Detalle Implementacion Roll Back"), Identity, IdProperty]
+        [DisplayName("Id Estado Detalle Implementación Roll Back"), Identity, IdProperty]
         public int? IdEstadoDetalleImplementacionRollBack { get; set; }
 
-        [DisplayName("Id Detalle Implementacion Roll Back"), NotNull, ForeignKey("DetalleImplementacionesRollBack", "IdDetalleImplementacionRollBack"), LeftJoin(jIdDetalleImplementacionRollBack), TextualField(nameof(IdDetalleImplementacionRollBackOrden))]
+        [LookupEditor(typeof(DetalleImplementacionesRollBackRow))]
+        [DisplayName("Implementación RollBack"), NotNull, ForeignKey("DetalleImplementacionesRollBack", "IdDetalleImplementacionRollBack"), LeftJoin(jIdDetalleImplementacionRollBack), TextualField(nameof(IdDetalleImplementacionRollBackOrden))]
         public int? IdDetalleImplementacionRollBack { get; set; }
 
-        [DisplayName("Id Estado Tarea"), NotNull, ForeignKey("EstadosTareas", "IdEstadoTarea"), LeftJoin(jIdEstadoTarea), TextualField(nameof(IdEstadoTareaDescripcion))]
+        [LookupEditor(typeof(EstadosTareasRow))]
+        [DisplayName("Estado Tarea"), NotNull, ForeignKey("EstadosTareas", "IdEstadoTarea"), LeftJoin(jIdEstadoTarea), TextualField(nameof(IdEstadoTareaDescripcion))]
         public int? IdEstadoTarea { get; set; }
 
-        [DisplayName("Id Tecnico Tarea"), NotNull, ForeignKey("Tecnicos", "IdTecnico"), LeftJoin(jIdTecnicoTarea), TextualField(nameof(IdTecnicoTareaNombreCompleto))]
+        [LookupEditor(typeof(TecnicosRow))]
+        [DisplayName("Tecnico Tarea"), NotNull, ForeignKey("Tecnicos", "IdTecnico"), LeftJoin(jIdTecnicoTarea), TextualField(nameof(IdTecnicoTareaNombreCompleto))]
         public int? IdTecnicoTarea { get; set; }
 
         [DisplayName("Fecha Estado"), NotNull]
@@ -41,6 +45,7 @@ public sealed partial class EstadosDetalleImplementacioneRollBackRow : Row<Estad
         public string NotasAdicionales { get; set; }
 
         [DisplayName("Documentos Adicionales")]
+        [MultipleFileUploadEditor]
         public string DocumentosAdicionales { get; set; }
 
         [DisplayName("Observaciones")]
@@ -49,13 +54,13 @@ public sealed partial class EstadosDetalleImplementacioneRollBackRow : Row<Estad
         [DisplayName("User"), NotNull, ForeignKey("Users", "UserId"), LeftJoin(jUser), TextualField(nameof(Username))]
         public int? UserId { get; set; }
 
-        [DisplayName("Id Detalle Implementacion Roll Back Orden"), Expression($"{jIdDetalleImplementacionRollBack}.[Orden]")]
+        [DisplayName("Orden"), Expression($"{jIdDetalleImplementacionRollBack}.[Orden]")]
         public string IdDetalleImplementacionRollBackOrden { get; set; }
 
-        [DisplayName("Id Estado Tarea Descripcion"), Expression($"{jIdEstadoTarea}.[Descripcion]")]
+        [DisplayName("Estado"), Expression($"{jIdEstadoTarea}.[Descripcion]")]
         public string IdEstadoTareaDescripcion { get; set; }
 
-        [DisplayName("Id Tecnico Tarea Nombre Completo"), Expression($"{jIdTecnicoTarea}.[NombreCompleto]")]
+        [DisplayName("Tecnico Tarea"), Expression($"{jIdTecnicoTarea}.[NombreCompleto]")]
         public string IdTecnicoTareaNombreCompleto { get; set; }
 
         [DisplayName("User Username"), Expression($"{jUser}.[Username]")]
