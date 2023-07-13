@@ -21,7 +21,7 @@ namespace InPlan.Migrations.DefaultDB
                 .WithColumn("IdTecnicoProyecto").AsInt32().Identity().PrimaryKey().NotNullable()
                 .WithColumn("IdProyecto").AsInt32().NotNullable()
                     .ForeignKey("FK_TecnicosProyectos_Proyectos", "Proyectos", "IdProyecto")
-                .WithColumn("IdTecnicos").AsInt32().NotNullable()
+                .WithColumn("IdTecnico").AsInt32().NotNullable()
                     .ForeignKey("FK_TecnicosProyectos_Tecnologias", "Tecnicos", "IdTecnico")
                 .WithColumn("Observaciones").AsString(int.MaxValue).Nullable()
                 .WithColumn("Baja").AsBoolean().NotNullable().WithDefaultValue(false);

@@ -1,4 +1,4 @@
-﻿using Serenity.ComponentModel;
+using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
 using System.ComponentModel;
@@ -9,6 +9,7 @@ namespace InPlan.Parametros;
 [DisplayName("Tecnicos Proyectos"), InstanceName("Tecnicos Proyectos")]
 [ReadPermission("Administration:General")]
 [ModifyPermission("Administration:General")]
+[LookupScript]
 public sealed partial class TecnicosProyectosRow : Row<TecnicosProyectosRow.RowFields>, IIdRow, INameRow
 {
     const string jIdProyecto = nameof(jIdProyecto);
@@ -19,11 +20,12 @@ public sealed partial class TecnicosProyectosRow : Row<TecnicosProyectosRow.RowF
         [DisplayName("Id Tecnico Proyecto"), Identity, IdProperty]
         public int? IdTecnicoProyecto { get; set; }
 
-        [DisplayName("Id Proyecto"), NotNull, ForeignKey("Proyectos", "IdProyecto"), LeftJoin(jIdProyecto), TextualField(nameof(IdProyectoNombreProyecto))]
+        [LookupEditor(typeof(ProyectosRow))]
+        [DisplayName("Proyecto"), NotNull, ForeignKey("Proyectos", "IdProyecto"), LeftJoin(jIdProyecto), TextualField(nameof(IdProyectoNombreProyecto))]
         public int? IdProyecto { get; set; }
 
-        [DisplayName("Id Tecnicos"), NotNull, ForeignKey("Tecnicos", "IdTecnico"), LeftJoin(jIdTecnicos), TextualField(nameof(IdTecnicosNombreCompleto))]
-        public int? IdTecnicos { get; set; }
+        [DisplayName("Técnico"), NotNull, ForeignKey("Tecnicos", "IdTecnico"), LeftJoin(jIdTecnicos), TextualField(nameof(IdTecnicosNombreCompleto))]
+        public int? IdTecnico { get; set; }
 
         [DisplayName("Observaciones"), QuickSearch, NameProperty]
         public string Observaciones { get; set; }
@@ -31,10 +33,10 @@ public sealed partial class TecnicosProyectosRow : Row<TecnicosProyectosRow.RowF
         [DisplayName("Baja"), NotNull]
         public bool? Baja { get; set; }
 
-        [DisplayName("Id Proyecto Nombre Proyecto"), Expression($"{jIdProyecto}.[NombreProyecto]")]
+        [DisplayName("Proyecto"), Expression($"{jIdProyecto}.[NombreProyecto]")]
         public string IdProyectoNombreProyecto { get; set; }
 
-        [DisplayName("Id Tecnicos Nombre Completo"), Expression($"{jIdTecnicos}.[NombreCompleto]")]
+        [DisplayName("Técnico"), Expression($"{jIdTecnicos}.[NombreCompleto]")]
         public string IdTecnicosNombreCompleto { get; set; }
     }
 }
