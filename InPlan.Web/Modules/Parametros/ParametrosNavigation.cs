@@ -10,6 +10,6 @@ using MyPages = InPlan.Parametros.Pages;
 [assembly: NavigationLink(int.MaxValue, "Parametros/Proyectos", typeof(MyPages.ProyectosPage), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Parametros/Proyectos Tecnologias", typeof(MyPages.ProyectosTecnologiasPage), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Parametros/Tecnico Proyecto Tecnologias", typeof(MyPages.TecnicoProyectoTecnologiasPage), icon: null)]
+[assembly: NavigationLink(500, "Parametros/Tecnologías", typeof(MyPages.TecnologiasPage), icon: "fa-code")]
 [assembly: NavigationLink(600, "Parametros/Técnicos", typeof(MyPages.TecnicosPage), icon: "fa-users-cog")]
 [assembly: NavigationLink(int.MaxValue, "Parametros/Tecnicos Proyectos", typeof(MyPages.TecnicosProyectosPage), icon: null)]
-[assembly: NavigationLink(int.MaxValue, "Parametros/Tecnologias", typeof(MyPages.TecnologiasPage), icon: null)]
