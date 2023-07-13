@@ -1,4 +1,5 @@
-﻿using Serenity.ComponentModel;
+using InPlan.Tenencia;
+using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
 using System.ComponentModel;
@@ -6,7 +7,7 @@ using System.ComponentModel;
 namespace InPlan.Parametros;
 
 [ConnectionKey("Default"), Module("Parametros"), TableName("Clientes")]
-[DisplayName("Clientes"), InstanceName("Clientes")]
+[DisplayName("Cliente"), InstanceName("Cliente")]
 [ReadPermission("Administration:General")]
 [ModifyPermission("Administration:General")]
 public sealed partial class ClientesRow : Row<ClientesRow.RowFields>, IIdRow, INameRow
@@ -19,16 +20,18 @@ public sealed partial class ClientesRow : Row<ClientesRow.RowFields>, IIdRow, IN
         [DisplayName("Id Cliente"), Identity, IdProperty]
         public int? IdCliente { get; set; }
 
-        [DisplayName("Id Empresa"), NotNull, ForeignKey("Empresas", "IdEmpresa"), LeftJoin(jIdEmpresa), TextualField(nameof(IdEmpresaDescripcionCorta))]
+        [LookupEditor(typeof(EmpresasRow))]
+        [DisplayName("Empresa"), NotNull, ForeignKey("Empresas", "IdEmpresa"), LeftJoin(jIdEmpresa), TextualField(nameof(IdEmpresaDescripcionCorta))]
         public int? IdEmpresa { get; set; }
 
-        [DisplayName("Id Area"), NotNull, ForeignKey("Areas", "IdArea"), LeftJoin(jIdArea), TextualField(nameof(IdAreaDescripcion))]
+        [LookupEditor(typeof(AreasRow))]
+        [DisplayName("Área"), NotNull, ForeignKey("Areas", "IdArea"), LeftJoin(jIdArea), TextualField(nameof(IdAreaDescripcion))]
         public int? IdArea { get; set; }
 
-        [DisplayName("Descripcion Corta"), Size(200), NotNull, QuickSearch, NameProperty]
+        [DisplayName("Descripción Corta"), Size(200), NotNull, QuickSearch, NameProperty]
         public string DescripcionCorta { get; set; }
 
-        [DisplayName("Descripcion")]
+        [DisplayName("Descripción")]
         public string Descripcion { get; set; }
 
         [DisplayName("Observaciones")]
@@ -37,10 +40,10 @@ public sealed partial class ClientesRow : Row<ClientesRow.RowFields>, IIdRow, IN
         [DisplayName("Baja"), NotNull]
         public bool? Baja { get; set; }
 
-        [DisplayName("Id Empresa Descripcion Corta"), Expression($"{jIdEmpresa}.[DescripcionCorta]")]
+        [DisplayName("Empresa"), Expression($"{jIdEmpresa}.[DescripcionCorta]")]
         public string IdEmpresaDescripcionCorta { get; set; }
 
-        [DisplayName("Id Area Descripcion"), Expression($"{jIdArea}.[Descripcion]")]
+        [DisplayName("Área"), Expression($"{jIdArea}.[Descripcion]")]
         public string IdAreaDescripcion { get; set; }
     }
 }
