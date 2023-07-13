@@ -1,4 +1,5 @@
-﻿using Serenity.ComponentModel;
+using InPlan.Parametros;
+using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
 using System;
@@ -10,6 +11,7 @@ namespace InPlan.Implementacion;
 [DisplayName("Detalle Implementaciones"), InstanceName("Detalle Implementaciones")]
 [ReadPermission("Administration:General")]
 [ModifyPermission("Administration:General")]
+[LookupScript]
 public sealed partial class DetalleImplementacionesRow : Row<DetalleImplementacionesRow.RowFields>, IIdRow, INameRow
 {
     const string jIdImplementacion = nameof(jIdImplementacion);
@@ -21,16 +23,18 @@ public sealed partial class DetalleImplementacionesRow : Row<DetalleImplementaci
         [DisplayName("Id Detalle Implementacion"), Identity, IdProperty]
         public int? IdDetalleImplementacion { get; set; }
 
-        [DisplayName("Id Implementacion"), NotNull, ForeignKey("Implementaciones", "IdImplementacion"), LeftJoin(jIdImplementacion), TextualField(nameof(IdImplementacionNroTicket))]
+        [LookupEditor(typeof(ImplementacionesRow))]
+        [DisplayName("Implementación"), NotNull, ForeignKey("Implementaciones", "IdImplementacion"), LeftJoin(jIdImplementacion), TextualField(nameof(IdImplementacionNroTicket))]
         public int? IdImplementacion { get; set; }
 
-        [DisplayName("Id Tecnico Responsable"), NotNull, ForeignKey("Tecnicos", "IdTecnico"), LeftJoin(jIdTecnicoResponsable), TextualField(nameof(IdTecnicoResponsableNombreCompleto))]
+        [LookupEditor(typeof(TecnicosRow))]
+        [DisplayName("Tecnico"), NotNull, ForeignKey("Tecnicos", "IdTecnico"), LeftJoin(jIdTecnicoResponsable), TextualField(nameof(IdTecnicoResponsableNombreCompleto))]
         public int? IdTecnicoResponsable { get; set; }
 
         [DisplayName("Orden"), QuickSearch, NameProperty]
         public string Orden { get; set; }
 
-        [DisplayName("Descripcion Tarea")]
+        [DisplayName("Descripción Tarea")]
         public string DescripcionTarea { get; set; }
 
         [DisplayName("Notas Adicionales")]
@@ -42,22 +46,22 @@ public sealed partial class DetalleImplementacionesRow : Row<DetalleImplementaci
         [DisplayName("Fecha Inicio"), NotNull]
         public DateTime? FechaInicio { get; set; }
 
-        [DisplayName("Fecha Finalizacion"), NotNull]
+        [DisplayName("Fecha Finalización"), NotNull]
         public DateTime? FechaFinalizacion { get; set; }
 
         [DisplayName("Observaciones")]
         public string Observaciones { get; set; }
 
-        [DisplayName("Id Estado Tarea"), NotNull, ForeignKey("EstadosTareas", "IdEstadoTarea"), LeftJoin(jIdEstadoTarea), TextualField(nameof(IdEstadoTareaDescripcion))]
+        [DisplayName("Estado Tarea"), NotNull, ForeignKey("EstadosTareas", "IdEstadoTarea"), LeftJoin(jIdEstadoTarea), TextualField(nameof(IdEstadoTareaDescripcion))]
         public int? IdEstadoTarea { get; set; }
 
-        [DisplayName("Id Implementacion Nro Ticket"), Expression($"{jIdImplementacion}.[NroTicket]")]
+        [DisplayName("Implementación"), Expression($"{jIdImplementacion}.[NroTicket]")]
         public string IdImplementacionNroTicket { get; set; }
 
-        [DisplayName("Id Tecnico Responsable Nombre Completo"), Expression($"{jIdTecnicoResponsable}.[NombreCompleto]")]
+        [DisplayName("Técnico"), Expression($"{jIdTecnicoResponsable}.[NombreCompleto]")]
         public string IdTecnicoResponsableNombreCompleto { get; set; }
 
-        [DisplayName("Id Estado Tarea Descripcion"), Expression($"{jIdEstadoTarea}.[Descripcion]")]
+        [DisplayName("Estado Tarea Descripción"), Expression($"{jIdEstadoTarea}.[Descripcion]")]
         public string IdEstadoTareaDescripcion { get; set; }
     }
 }
