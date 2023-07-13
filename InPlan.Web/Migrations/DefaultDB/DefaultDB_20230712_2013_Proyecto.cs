@@ -42,6 +42,7 @@ namespace InPlan.Migrations.DefaultDB
                 .WithColumn("Observaciones").AsString(int.MaxValue).Nullable();
 
 
+
             Create.Table("Implementaciones")
                 .WithColumn("IdImplementacion").AsInt32().Identity().PrimaryKey().NotNullable()
                 .WithColumn("IdProyecto").AsInt32().NotNullable()

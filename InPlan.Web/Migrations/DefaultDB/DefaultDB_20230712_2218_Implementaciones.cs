@@ -35,7 +35,6 @@ namespace InPlan.Migrations.DefaultDB
 
 
 
-
             Create.Table("EstadosDetalleImplementaciones")
                 .WithColumn("IdEstadoDetalleImplementacion").AsInt32().Identity().PrimaryKey().NotNullable()
                 .WithColumn("IdDetalleImplementacion").AsInt32().NotNullable()
@@ -54,7 +53,6 @@ namespace InPlan.Migrations.DefaultDB
 
 
 
-
             Create.Table("DetalleImplementacionesRollBack")
                .WithColumn("IdDetalleImplementacionRollBack").AsInt32().Identity().PrimaryKey().NotNullable()
                .WithColumn("IdImplementacion").AsInt32().NotNullable()
@@ -70,8 +68,6 @@ namespace InPlan.Migrations.DefaultDB
                .WithColumn("Observaciones").AsString(int.MaxValue).Nullable()
                .WithColumn("IdEstadoTarea").AsInt32().NotNullable()
                    .ForeignKey("FK_DetalleImplementacionesRollBack_EstadosTareas", "EstadosTareas", "IdEstadoTarea");
-
-
 
 
 

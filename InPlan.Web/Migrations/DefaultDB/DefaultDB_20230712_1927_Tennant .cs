@@ -24,7 +24,6 @@ namespace InPlan.Migrations.DefaultDB
                 .WithColumn("Observaciones").AsString(int.MaxValue).Nullable()
                 .WithColumn("Baja").AsBoolean().NotNullable().WithDefaultValue(false);
 
-
         }
     }
 }
