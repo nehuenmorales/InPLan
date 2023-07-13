@@ -1,5 +1,6 @@
 using Serenity.ComponentModel;
 using System;
+using System.ComponentModel;
 
 namespace InPlan.Implementacion.Forms;
 
@@ -7,33 +8,40 @@ namespace InPlan.Implementacion.Forms;
 [BasedOnRow(typeof(ImplementacionesRow), CheckNames = true)]
 public class ImplementacionesForm
 {
+    [Tab("Datos")]
+    [Category("Sobre la implementación")]
     [HalfWidth]
     public int IdProyecto { get; set; }
     [HalfWidth]
     public int IdAmbienteProyecto { get; set; }
-    [HalfWidth]
-    public int IdTecnicoSolicitante { get; set; }
-    [HalfWidth]
-    public int IdTecnicoImplementa { get; set; }
-    [HalfWidth]
+    [DisplayName("Tipo") ,HalfWidth]
     public int IdTipoImplementacion { get; set; }
     [HalfWidth]
     public string NroTicket { get; set; }
     [TextAreaEditor(Rows = 3)]
     public string Descripcion { get; set; }
+    [Category("Tecnicos relacionados")]
+    [DisplayName("Solicitante") ,HalfWidth]
+    public int IdTecnicoSolicitante { get; set; }
+    [DisplayName("Implementador"), HalfWidth]
+    public int IdTecnicoImplementa { get; set; }
+    [Category("Fechas y Consideraciones")]
     [HalfWidth]
     public DateTime FechaSolicitud { get; set; }
     [HalfWidth]
     public DateTime FechaPlanificada { get; set; }
-    [HalfWidth]
+    [DisplayName("Implementación") , HalfWidth]
     public DateTime FechaImplementacion { get; set; }
     [TextAreaEditor(Rows = 3)]
     public string ConsideracionesPrevias { get; set; }
     [TextAreaEditor(Rows = 3)]
     public string ConsideracionesPosteriores { get; set; }
+    [Category("Notas")]
     public string NotasAdicionales { get; set; }
-    public string DocumentosAdicionales { get; set; }
     [TextAreaEditor(Rows = 5)]
     public string Observaciones { get; set; }
     public int UserId { get; set; }
+    [Tab("Documentos")]
+    [Category("")]
+    public string DocumentosAdicionales { get; set; }
 }

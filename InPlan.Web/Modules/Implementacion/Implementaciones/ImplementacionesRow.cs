@@ -8,7 +8,7 @@ using System.ComponentModel;
 namespace InPlan.Implementacion;
 
 [ConnectionKey("Default"), Module("Implementacion"), TableName("Implementaciones")]
-[DisplayName("Implementaci�nes"), InstanceName("Implementaci�n")]
+[DisplayName("Implementaciónes"), InstanceName("Implementación")]
 [ReadPermission("Administration:General")]
 [ModifyPermission("Administration:General")]
 [LookupScript]
@@ -61,7 +61,7 @@ public sealed partial class ImplementacionesRow : Row<ImplementacionesRow.RowFie
         [DisplayName("Consideraciones Previas"), Size(250)]
         public string ConsideracionesPrevias { get; set; }
 
-        [DisplayName("Descripci�n"), Size(250)]
+        [DisplayName("Descripción"), Size(250)]
         public string Descripcion { get; set; }
 
         [DisplayName("Consideraciones Posteriores"), Size(250)]
@@ -92,7 +92,7 @@ public sealed partial class ImplementacionesRow : Row<ImplementacionesRow.RowFie
         [DisplayName("Tecnico Implementa"), Expression($"{jIdTecnicoImplementa}.[NombreCompleto]")]
         public string IdTecnicoImplementaNombreCompleto { get; set; }
 
-        [DisplayName("Tipo Implementaci�n"), Expression($"{jIdTipoImplementacion}.[Descripcion]")]
+        [DisplayName("Tipo Implementación"), Expression($"{jIdTipoImplementacion}.[Descripcion]")]
         public string IdTipoImplementacionDescripcion { get; set; }
 
         [DisplayName("User"), Expression($"{jUser}.[Username]")]
