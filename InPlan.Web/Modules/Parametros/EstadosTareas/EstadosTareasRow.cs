@@ -10,6 +10,7 @@ namespace InPlan.Parametros;
 [DisplayName("Estados Tareas"), InstanceName("Estado Tarea")]
 [ReadPermission("Administration:General")]
 [ModifyPermission("Administration:General")]
+[LookupScript]
 public sealed partial class EstadosTareasRow : Row<EstadosTareasRow.RowFields>, IIdRow, INameRow
 {
     const string jIdEmpresa = nameof(jIdEmpresa);

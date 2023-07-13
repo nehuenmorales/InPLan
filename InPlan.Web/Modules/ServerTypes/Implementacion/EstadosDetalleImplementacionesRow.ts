@@ -1,4 +1,4 @@
-﻿import { fieldsProxy } from "@serenity-is/corelib/q";
+﻿import { getLookup, getLookupAsync, fieldsProxy } from "@serenity-is/corelib/q";
 
 export interface EstadosDetalleImplementacionesRow {
     IdEstadoDetalleImplementacion?: number;
@@ -21,6 +21,12 @@ export abstract class EstadosDetalleImplementacionesRow {
     static readonly idProperty = 'IdEstadoDetalleImplementacion';
     static readonly nameProperty = 'NotasAdicionales';
     static readonly localTextPrefix = 'Implementacion.EstadosDetalleImplementaciones';
+    static readonly lookupKey = 'Implementacion.EstadosDetalleImplementaciones';
+
+    /** @deprecated use getLookupAsync instead */
+    static getLookup() { return getLookup<EstadosDetalleImplementacionesRow>('Implementacion.EstadosDetalleImplementaciones') }
+    static async getLookupAsync() { return getLookupAsync<EstadosDetalleImplementacionesRow>('Implementacion.EstadosDetalleImplementaciones') }
+
     static readonly deletePermission = 'Administration:General';
     static readonly insertPermission = 'Administration:General';
     static readonly readPermission = 'Administration:General';
