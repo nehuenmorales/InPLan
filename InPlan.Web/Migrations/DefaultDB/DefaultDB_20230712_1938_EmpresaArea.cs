@@ -41,7 +41,7 @@ namespace InPlan.Migrations.DefaultDB
                     .ForeignKey("FK_Ambientes_Empresas", "Empresas", "IdEmpresa")
                 .WithColumn("IdArea").AsInt32().NotNullable()
                     .ForeignKey("FK_Ambientes_Areas", "Areas", "IdArea")
-                .WithColumn("Descripcion").AsString(int.MaxValue).Nullable()
+                .WithColumn("Descripcion").AsString(200).NotNullable()
                 .WithColumn("Observaciones").AsString(int.MaxValue).Nullable()
                 .WithColumn("Baja").AsBoolean().NotNullable().WithDefaultValue(false);
 

@@ -18,4 +18,4 @@ using Serenity.Navigation;
 [assembly: NavigationSection("Administration/Security",
     Include = new[] { "Administration/Roles", "Administration/User Management" })]
 
-[assembly: NavigationLink(1000, "Dashboard", url: "~/", permission: "", icon: "fa-tachometer")]
+[assembly: NavigationLink(1, "Dashboard", url: "~/", permission: "", icon: "fa-tachometer")]
