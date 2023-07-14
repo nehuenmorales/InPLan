@@ -40,18 +40,19 @@ public sealed partial class DetalleImplementacionesRow : Row<DetalleImplementaci
         [DisplayName("Notas Adicionales")]
         public string NotasAdicionales { get; set; }
 
-        [DisplayName("Documentos Adicionales")]
+        [DisplayName("Documentos Adicionales"), MultipleFileUploadEditor]
         public string DocumentosAdicionales { get; set; }
 
         [DisplayName("Fecha Inicio"), NotNull]
         public DateTime? FechaInicio { get; set; }
 
-        [DisplayName("Fecha Finalización"), NotNull]
+        [DisplayName("Fecha Finalización")]
         public DateTime? FechaFinalizacion { get; set; }
 
         [DisplayName("Observaciones")]
         public string Observaciones { get; set; }
 
+        [LookupEditor(typeof(EstadosTareasRow))]
         [DisplayName("Estado Tarea"), NotNull, ForeignKey("EstadosTareas", "IdEstadoTarea"), LeftJoin(jIdEstadoTarea), TextualField(nameof(IdEstadoTareaDescripcion))]
         public int? IdEstadoTarea { get; set; }
 

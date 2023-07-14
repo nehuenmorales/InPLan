@@ -1,4 +1,5 @@
-﻿import { getLookup, getLookupAsync, fieldsProxy } from "@serenity-is/corelib/q";
+﻿import { DetalleImplementacionesRow } from "./DetalleImplementacionesRow";
+import { getLookup, getLookupAsync, fieldsProxy } from "@serenity-is/corelib/q";
 
 export interface ImplementacionesRow {
     IdImplementacion?: number;
@@ -24,6 +25,7 @@ export interface ImplementacionesRow {
     IdTecnicoImplementaNombreCompleto?: string;
     IdTipoImplementacionDescripcion?: string;
     Username?: string;
+    DetallesList?: DetalleImplementacionesRow[];
 }
 
 export abstract class ImplementacionesRow {

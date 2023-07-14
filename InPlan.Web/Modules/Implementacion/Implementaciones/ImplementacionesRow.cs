@@ -3,6 +3,7 @@ using Serenity.ComponentModel;
 using Serenity.Data;
 using Serenity.Data.Mapping;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace InPlan.Implementacion;
@@ -55,7 +56,7 @@ public sealed partial class ImplementacionesRow : Row<ImplementacionesRow.RowFie
         [DisplayName("Fecha Planificada"), NotNull]
         public DateTime? FechaPlanificada { get; set; }
 
-        [DisplayName("Fecha Implementaci�n"), NotNull]
+        [DisplayName("Fecha Implementación")]
         public DateTime? FechaImplementacion { get; set; }
 
         [DisplayName("Consideraciones Previas"), Size(250)]
@@ -97,5 +98,9 @@ public sealed partial class ImplementacionesRow : Row<ImplementacionesRow.RowFie
 
         [DisplayName("User"), Expression($"{jUser}.[Username]")]
         public string Username { get; set; }
+
+        [DisplayName("Detalles"), MasterDetailRelation(foreignKey: "IdImplementacion", IncludeColumnNames = new[] { "IdTecnicoResponsableNombreCompleto" })]
+        public List<DetalleImplementacionesRow> DetallesList { get; set; }
+
     }
 }

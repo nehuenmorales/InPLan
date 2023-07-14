@@ -1,4 +1,5 @@
 ﻿import { LookupEditor, StringEditor, TextAreaEditor, DateEditor, IntegerEditor, MultipleImageUploadEditor, PrefixedContext } from "@serenity-is/corelib";
+import { DetalleImplementacionesEditor } from "@/Implementacion/DetalleImplementaciones/DetalleImplementacionesEditor";
 import { initFormType } from "@serenity-is/corelib/q";
 
 export interface ImplementacionesForm {
@@ -17,6 +18,7 @@ export interface ImplementacionesForm {
     NotasAdicionales: StringEditor;
     Observaciones: TextAreaEditor;
     UserId: IntegerEditor;
+    DetallesList: DetalleImplementacionesEditor;
     DocumentosAdicionales: MultipleImageUploadEditor;
 }
 
@@ -35,7 +37,8 @@ export class ImplementacionesForm extends PrefixedContext {
             var w2 = TextAreaEditor;
             var w3 = DateEditor;
             var w4 = IntegerEditor;
-            var w5 = MultipleImageUploadEditor;
+            var w5 = DetalleImplementacionesEditor;
+            var w6 = MultipleImageUploadEditor;
 
             initFormType(ImplementacionesForm, [
                 'IdProyecto', w0,
@@ -53,7 +56,8 @@ export class ImplementacionesForm extends PrefixedContext {
                 'NotasAdicionales', w1,
                 'Observaciones', w2,
                 'UserId', w4,
-                'DocumentosAdicionales', w5
+                'DetallesList', w5,
+                'DocumentosAdicionales', w6
             ]);
         }
     }

@@ -58,7 +58,7 @@ namespace InPlan.Migrations.DefaultDB
                 .WithColumn("NroTicket").AsString(100).Nullable()
                 .WithColumn("FechaSolicitud").AsDate().NotNullable()
                 .WithColumn("FechaPlanificada").AsDate().NotNullable()
-                .WithColumn("FechaImplementacion").AsDate().NotNullable()
+                .WithColumn("FechaImplementacion").AsDate().Nullable()
                 .WithColumn("ConsideracionesPrevias").AsString(250).Nullable()
                 .WithColumn("Descripcion").AsString(250).Nullable()
                 .WithColumn("ConsideracionesPosteriores").AsString(250).Nullable()
