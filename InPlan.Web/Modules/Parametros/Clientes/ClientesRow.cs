@@ -24,7 +24,7 @@ public sealed partial class ClientesRow : Row<ClientesRow.RowFields>, IIdRow, IN
         [DisplayName("Empresa"), NotNull, ForeignKey("Empresas", "IdEmpresa"), LeftJoin(jIdEmpresa), TextualField(nameof(IdEmpresaDescripcionCorta))]
         public int? IdEmpresa { get; set; }
 
-        [LookupEditor(typeof(AreasRow))]
+        [LookupEditor(typeof(AreasRow), CascadeFrom = "IdEmpresa")]
         [DisplayName("Área"), NotNull, ForeignKey("Areas", "IdArea"), LeftJoin(jIdArea), TextualField(nameof(IdAreaDescripcion))]
         public int? IdArea { get; set; }
 

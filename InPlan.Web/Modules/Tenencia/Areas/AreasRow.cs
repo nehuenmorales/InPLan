@@ -19,7 +19,7 @@ public sealed partial class AreasRow : Row<AreasRow.RowFields>, IIdRow, INameRow
         [DisplayName("Id Area"), Identity, IdProperty]
         public int? IdArea { get; set; }
 
-        [LookupEditor(typeof(EmpresasRow))]
+        [LookupEditor(typeof(EmpresasRow)), LookupInclude]
         [DisplayName("Empresa"), NotNull, ForeignKey("Empresas", "IdEmpresa"), LeftJoin(jIdEmpresa), TextualField(nameof(IdEmpresaDescripcionCorta))]
         public int? IdEmpresa { get; set; }
 
