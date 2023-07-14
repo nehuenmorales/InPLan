@@ -11,7 +11,7 @@ namespace InPlan.Migrations.DefaultDB
             Create.Table("TecnicoProyectoTecnologias")
                 .WithColumn("IdTecnicoProyectoTecnologia").AsInt32().Identity().PrimaryKey().NotNullable()
                 .WithColumn("IdTecnicoProyecto").AsInt32().NotNullable()
-                    .ForeignKey("FK_TecnicoProyectoTecnologias_TecnicosProyectos", "TecnicosProyectos", "IdTEcnicoProyecto")
+                    .ForeignKey("FK_TecnicoProyectoTecnologias_TecnicosProyectos", "TecnicosProyectos", "IdTecnicoProyecto")
                 .WithColumn("IdTecnologia").AsInt32().NotNullable()
                     .ForeignKey("FK_TecnicoProyectoTecnologias_Tecnologias", "Tecnologias", "IdTecnologia");
 
