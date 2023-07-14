@@ -10,9 +10,9 @@ public class DetalleImplementacionesColumns
 {
     //[EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
     //public int IdDetalleImplementacion { get; set; }
+    //[Width(100), EditLink]
+    //public string IdImplementacionNroTicket { get; set; }
     [Width(100), EditLink]
-    public string IdImplementacionNroTicket { get; set; }
-    [Width(100)]
     public string IdTecnicoResponsableNombreCompleto { get; set; }
     [EditLink, Width(100)]
     public string Orden { get; set; }

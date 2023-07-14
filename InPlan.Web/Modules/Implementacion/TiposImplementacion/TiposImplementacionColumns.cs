@@ -11,7 +11,7 @@ public class TiposImplementacionColumns
     //public int IdTipoImplementacion { get; set; }
     [EditLink, Width(150)]
     public string Descripcion { get; set; }
-    public string Observaciones { get; set; }
+    //public string Observaciones { get; set; }
     [Width(100)]
     public string IdEmpresaDescripcionCorta { get; set; }
     [Width(150)]

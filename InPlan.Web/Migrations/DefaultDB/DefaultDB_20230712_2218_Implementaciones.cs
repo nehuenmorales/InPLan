@@ -28,7 +28,7 @@ namespace InPlan.Migrations.DefaultDB
                 .WithColumn("NotasAdicionales").AsString(int.MaxValue).Nullable()
                 .WithColumn("DocumentosAdicionales").AsString(int.MaxValue).Nullable()
                 .WithColumn("FechaInicio").AsDate().NotNullable()
-                .WithColumn("FechaFinalizacion").AsDate().NotNullable()
+                .WithColumn("FechaFinalizacion").AsDate().Nullable()
                 .WithColumn("Observaciones").AsString(int.MaxValue).Nullable()
                 .WithColumn("IdEstadoTarea").AsInt32().NotNullable()
                     .ForeignKey("FK_DetalleImplementaciones_EstadosTareas", "EstadosTareas", "IdEstadoTarea");

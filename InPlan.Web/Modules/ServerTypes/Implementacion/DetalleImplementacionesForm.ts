@@ -1,17 +1,16 @@
-﻿import { LookupEditor, StringEditor, DateEditor, IntegerEditor, PrefixedContext } from "@serenity-is/corelib";
+﻿import { LookupEditor, StringEditor, TextAreaEditor, DateEditor, MultipleImageUploadEditor, PrefixedContext } from "@serenity-is/corelib";
 import { initFormType } from "@serenity-is/corelib/q";
 
 export interface DetalleImplementacionesForm {
-    IdImplementacion: LookupEditor;
     IdTecnicoResponsable: LookupEditor;
     Orden: StringEditor;
-    DescripcionTarea: StringEditor;
-    NotasAdicionales: StringEditor;
-    DocumentosAdicionales: StringEditor;
+    DescripcionTarea: TextAreaEditor;
     FechaInicio: DateEditor;
     FechaFinalizacion: DateEditor;
-    Observaciones: StringEditor;
-    IdEstadoTarea: IntegerEditor;
+    NotasAdicionales: StringEditor;
+    IdEstadoTarea: LookupEditor;
+    DocumentosAdicionales: MultipleImageUploadEditor;
+    Observaciones: TextAreaEditor;
 }
 
 export class DetalleImplementacionesForm extends PrefixedContext {
@@ -26,20 +25,20 @@ export class DetalleImplementacionesForm extends PrefixedContext {
 
             var w0 = LookupEditor;
             var w1 = StringEditor;
-            var w2 = DateEditor;
-            var w3 = IntegerEditor;
+            var w2 = TextAreaEditor;
+            var w3 = DateEditor;
+            var w4 = MultipleImageUploadEditor;
 
             initFormType(DetalleImplementacionesForm, [
-                'IdImplementacion', w0,
                 'IdTecnicoResponsable', w0,
                 'Orden', w1,
-                'DescripcionTarea', w1,
+                'DescripcionTarea', w2,
+                'FechaInicio', w3,
+                'FechaFinalizacion', w3,
                 'NotasAdicionales', w1,
-                'DocumentosAdicionales', w1,
-                'FechaInicio', w2,
-                'FechaFinalizacion', w2,
-                'Observaciones', w1,
-                'IdEstadoTarea', w3
+                'IdEstadoTarea', w0,
+                'DocumentosAdicionales', w4,
+                'Observaciones', w2
             ]);
         }
     }

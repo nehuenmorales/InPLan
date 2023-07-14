@@ -1,5 +1,7 @@
+using InPlan.Colaboradores;
 using Serenity.ComponentModel;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace InPlan.Implementacion.Forms;
@@ -41,7 +43,11 @@ public class ImplementacionesForm
     [TextAreaEditor(Rows = 5)]
     public string Observaciones { get; set; }
     public int UserId { get; set; }
+    [DetalleImplementacionesEditor, Category("Tareas")]
+    public List<DetalleImplementacionesRow> DetallesList { get; set; }
+
     [Tab("Documentos")]
     [Category("")]
     public string DocumentosAdicionales { get; set; }
+
 }
